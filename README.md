@@ -1,0 +1,2 @@
+# phpcs-ruleset
+PHP
