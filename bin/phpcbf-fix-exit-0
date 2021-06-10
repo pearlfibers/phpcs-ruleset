@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Fix incompatibility with lint-staged for exit codes.
+ *
+ */
+
+if (is_file(__DIR__.'/../../../squizlabs/php_codesniffer/autoload.php') === true) {
+    include_once __DIR__.'/../../../squizlabs/php_codesniffer/autoload.php';
+} else {
+    include_once 'PHP/CodeSniffer/autoload.php';
+}
+
+$runner   = new PHP_CodeSniffer\Runner();
+$exitCode = $runner->runPHPCBF();
+
+if ( 1 === $exitCode ){
+    $exitCode = 0;
+}
+exit($exitCode);
